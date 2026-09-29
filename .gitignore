@@ -13,7 +13,7 @@ examples/output/train_*/
 examples/output/search/
 examples/output/audit/
 examples/output/smoke/
-data/
+/data/
 runs/
 .smoke_output/
 .scratch/
