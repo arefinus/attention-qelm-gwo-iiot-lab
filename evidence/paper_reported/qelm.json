@@ -1,0 +1,90 @@
+{
+  "evidence_status": "paper-reported",
+  "paper": "Attention-guided quantum-inspired extreme learning machine with grey wolf optimization for rare-attack detection in IIoT networks",
+  "venue": "Discover Artificial Intelligence (Springer Nature), 2026, article in press",
+  "doi": "10.1007/s44163-026-01704-3",
+  "dataset": "Edge-IIoTset (processed by the paper's authors: 1,909,671 rows, 15 classes, 48 features)",
+  "statement": "Every value below is transcribed from the published article and is labelled paper-reported. None of these values was computed, reproduced or verified by this repository. Demo metrics produced by this repository live in examples/output/metrics.json and are labelled demo.",
+  "results": {
+    "binary_table6": {
+      "source_locator": "Table 6 (binary task: Normal vs attack), Section 5",
+      "evidence_status": "paper-reported",
+      "values": {
+        "accuracy": 0.9954,
+        "precision": 0.9947,
+        "recall": 0.9938,
+        "f1": 0.9942,
+        "fpr": 0.0043,
+        "auc": 0.9997
+      }
+    },
+    "multiclass_table7": {
+      "source_locator": "Table 7 (15-class task), Section 5",
+      "evidence_status": "paper-reported",
+      "values": {
+        "accuracy": 0.9894,
+        "macro_precision": 0.9871,
+        "macro_recall": 0.9848,
+        "macro_f1": 0.9859,
+        "fpr": 0.0079,
+        "training_time_minutes": 67
+      }
+    },
+    "mitm_table8": {
+      "source_locator": "Table 8 (per-class results, MITM row), Section 5",
+      "evidence_status": "paper-reported",
+      "values": {
+        "mitm_f1_proposed": 0.9421,
+        "mitm_f1_best_baseline": 0.8764,
+        "best_baseline_name": "DenseNet"
+      }
+    },
+    "ablations_table11": {
+      "source_locator": "Table 11 (ablation study, 15-class accuracy), Section 5",
+      "evidence_status": "paper-reported",
+      "values": {
+        "full_model": 0.9894,
+        "without_attention": 0.9762,
+        "without_qelm": 0.9809,
+        "without_quantum_init": 0.9794,
+        "without_gwo": 0.9796,
+        "without_focal_loss": 0.9763,
+        "encoder_plus_mlp": 0.9598
+      }
+    },
+    "cost_table12": {
+      "source_locator": "Table 12 (computational cost), Section 5",
+      "evidence_status": "paper-reported",
+      "values": {
+        "parameters_millions": 0.21,
+        "operations_millions": 2.83,
+        "inference_ms_gpu": 0.31,
+        "inference_ms_cpu": 4.12,
+        "hardware": "RTX 3080 10GB, i7-10700, 32GB RAM"
+      }
+    },
+    "gwo_convergence": {
+      "source_locator": "Section 4.4 / Section 5 (GWO convergence iteration)",
+      "evidence_status": "paper-reported",
+      "values": {
+        "converged_iteration_multiclass": 38,
+        "converged_iteration_binary": 31
+      }
+    }
+  },
+  "settings_from_paper": {
+    "source_locator": "Sections 3.2, 4.2, 4.3, 4.4, Table 3, Table 5",
+    "split": "stratified 80/20 (1,527,736 train / 381,935 test)",
+    "seeds": [7, 13, 21, 42, 99],
+    "encoder": "48 -> 128 -> 64 -> 8 tokens x 32, 8 heads d_k 32, FFN x4 GELU, dropout 0.1, learned feature-index embedding",
+    "qelm_final": {"n_layers": 3, "n_hidden": 512, "activation": "gelu", "lambda1": 3.2e-4, "lambda2": 1.7e-3, "theta": 1.84, "rho": 0.63},
+    "gwo": {"n_wolves": 20, "max_iter": 50, "a_schedule": "2(1 - t/T_max)", "early_stop": "under 1e-4 improvement over 10 iterations", "fitness": "5-fold CV macro-F1 on the training partition"},
+    "training": {"optimizer": "Adam lr 1e-3 betas (0.9, 0.999)", "loss": "focal gamma 2 alpha 0.25 with inverse-frequency class weights", "batch_size": 32, "epochs": 100, "patience": 15},
+    "environment": "Python 3.9, TensorFlow 2.11, scikit-learn 1.2, numpy 1.24, pandas 1.5.3"
+  },
+  "notes": {
+    "friedman_inconsistency": "The article reports the Friedman statistic as chi-square 50.00 (df 10, p 2.67e-7) in the abstract and Section 5.7, and as chi-square 54.98 in the contributions list. The two figures cannot both be correct for the same test; this repository records the inconsistency and does not choose between them.",
+    "not_reproduced": "No real-data run was performed here. Nothing in this repository is labelled reproduced.",
+    "upstream_code": "The article cites https://github.com/drmohammedadnan110-ai/Attention-QELM-GWO-IIoT-IDS as its code source. That repository was not audited, executed or reused for this implementation."
+  }
+}

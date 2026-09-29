@@ -1,0 +1,18 @@
+# Demo GWO settings: same 7-dimensional space as gwo_paper.yaml, tiny budget so the
+# search runs in seconds on the fixture (N=6 wolves, T=4 iterations, 2 inner folds).
+# n_hidden is capped at 256 for demo speed; the paper bound is 1024.
+name: gwo_demo
+n_wolves: 6
+max_iter: 4
+early_stop_tol: 1.0e-4
+early_stop_patience: 10
+a_schedule: linear
+seed: 42
+space:
+  n_layers:    { type: int,   low: 1,       high: 5 }
+  n_hidden:    { type: int,   low: 64,      high: 256 }
+  activation:  { type: cat,   choices: [sigmoid, tanh, relu, gelu] }
+  lambda1:     { type: log,   low: 1.0e-6,  high: 1.0e-1 }
+  lambda2:     { type: log,   low: 1.0e-6,  high: 1.0e-1 }
+  theta:       { type: float, low: 0.0,     high: 6.283185307179586 }
+  rho:         { type: float, low: 0.0,     high: 1.0 }

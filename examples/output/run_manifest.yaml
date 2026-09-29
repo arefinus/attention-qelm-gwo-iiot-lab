@@ -1,0 +1,55 @@
+schema_version: 1
+project_id: attention-qelm-gwo-iiot-lab
+run_id: 20260928T110244Z-demo
+status: completed
+mode: demo
+evidence_status: demo
+git_commit: null
+data:
+  source_id: synthetic-fixture-v1
+  version: v1
+  split_manifest_hash: ada056d8e3e51bb7d408be1b1f5b8e99e6992b24230b35fcecb2f3c0d2dbb5e5
+  sample_counts:
+    train: 7224
+    test: 1806
+    train_per_class:
+      Normal: 5230
+      DDoS_UDP: 459
+      DDoS_ICMP: 258
+      SQL_Injection: 192
+      DDoS_TCP: 190
+      DDoS_HTTP: 186
+      Password: 145
+      Vulnerability_Scanner: 119
+      Port_Scanning: 110
+      XSS: 87
+      Uploading: 76
+      Backdoor: 66
+      OS_Fingerprinting: 54
+      Ransomware: 42
+      MITM: 10
+    test_per_class:
+      Normal: 1307
+      DDoS_UDP: 115
+      DDoS_ICMP: 65
+      SQL_Injection: 48
+      DDoS_TCP: 48
+      DDoS_HTTP: 46
+      Password: 36
+      Vulnerability_Scanner: 30
+      Port_Scanning: 27
+      XSS: 22
+      Uploading: 19
+      Backdoor: 16
+      OS_Fingerprinting: 14
+      Ransomware: 11
+      MITM: 2
+configuration_hash: 92a8714616637e6d84e2dd696071466124e5f85434dca1e393264af1be0d8654
+seed: 42
+environment:
+  python: 3.10.11
+  device: cpu
+metrics_file: examples\output\metrics.json
+predictions_file: examples\output\predictions.csv
+started_at: '2026-09-28T10:53:51+00:00'
+finished_at: '2026-09-28T11:02:44+00:00'

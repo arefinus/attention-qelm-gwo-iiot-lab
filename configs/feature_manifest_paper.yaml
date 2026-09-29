@@ -1,0 +1,122 @@
+# 48-feature manifest for the processed Edge-IIoTset table used by the source paper.
+#
+# LOUD WARNING. The exact processed column schema is NOT verifiable from the paper:
+# the paper reports 48 retained features after dropping constant, duplicate and
+# metadata columns, but does not list their names. The slot names below
+# (feature_01 .. feature_48) are PLACEHOLDERS. Before running the real-data adapter,
+# replace each `name` with the column name produced by YOUR OWN preprocessing of the
+# Edge-IIoTset release. The raw release columns are NOT assumed to equal these slots,
+# and the adapter refuses any CSV whose feature columns do not match this manifest
+# exactly (no silent truncation, no positional guessing).
+#
+# dtype is either `numeric` (median imputation) or `categorical` (mode imputation,
+# label-encoded). Set it per column from your processed table.
+schema_version: 1
+source: edge-iiotset-processed
+n_features: 48
+label_column: label
+# Columns that the paper drops before modelling (frame number, timestamp, raw IP
+# addresses). If they are present in the CSV they are removed and never used as
+# features. Any OTHER column not listed in `features` is an error.
+drop_columns:
+  - frame.number
+  - frame.time
+  - ip.src_host
+  - ip.dst_host
+features:
+  - name: feature_01
+    dtype: numeric
+  - name: feature_02
+    dtype: numeric
+  - name: feature_03
+    dtype: numeric
+  - name: feature_04
+    dtype: numeric
+  - name: feature_05
+    dtype: numeric
+  - name: feature_06
+    dtype: numeric
+  - name: feature_07
+    dtype: numeric
+  - name: feature_08
+    dtype: numeric
+  - name: feature_09
+    dtype: numeric
+  - name: feature_10
+    dtype: numeric
+  - name: feature_11
+    dtype: numeric
+  - name: feature_12
+    dtype: numeric
+  - name: feature_13
+    dtype: numeric
+  - name: feature_14
+    dtype: numeric
+  - name: feature_15
+    dtype: numeric
+  - name: feature_16
+    dtype: numeric
+  - name: feature_17
+    dtype: numeric
+  - name: feature_18
+    dtype: numeric
+  - name: feature_19
+    dtype: numeric
+  - name: feature_20
+    dtype: numeric
+  - name: feature_21
+    dtype: numeric
+  - name: feature_22
+    dtype: numeric
+  - name: feature_23
+    dtype: numeric
+  - name: feature_24
+    dtype: numeric
+  - name: feature_25
+    dtype: numeric
+  - name: feature_26
+    dtype: numeric
+  - name: feature_27
+    dtype: numeric
+  - name: feature_28
+    dtype: numeric
+  - name: feature_29
+    dtype: numeric
+  - name: feature_30
+    dtype: numeric
+  - name: feature_31
+    dtype: numeric
+  - name: feature_32
+    dtype: numeric
+  - name: feature_33
+    dtype: numeric
+  - name: feature_34
+    dtype: numeric
+  - name: feature_35
+    dtype: numeric
+  - name: feature_36
+    dtype: numeric
+  - name: feature_37
+    dtype: numeric
+  - name: feature_38
+    dtype: numeric
+  - name: feature_39
+    dtype: numeric
+  - name: feature_40
+    dtype: numeric
+  - name: feature_41
+    dtype: numeric
+  - name: feature_42
+    dtype: numeric
+  - name: feature_43
+    dtype: numeric
+  - name: feature_44
+    dtype: numeric
+  - name: feature_45
+    dtype: numeric
+  - name: feature_46
+    dtype: numeric
+  - name: feature_47
+    dtype: numeric
+  - name: feature_48
+    dtype: numeric

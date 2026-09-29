@@ -1,0 +1,31 @@
+# Fixed 15-class label order for the multiclass task.
+# Order follows Table 1 of the source paper: Normal first, MITM last, attack classes
+# in descending processed-row count between them. This order is a schema constant:
+# confusion matrices, per-class metrics and one-hot targets all use it. Never reorder.
+schema_version: 1
+task: multiclass
+label_column: label
+classes:
+  - Normal
+  - DDoS_UDP
+  - DDoS_ICMP
+  - SQL_Injection
+  - DDoS_TCP
+  - DDoS_HTTP
+  - Password
+  - Vulnerability_Scanner
+  - Port_Scanning
+  - XSS
+  - Uploading
+  - Backdoor
+  - OS_Fingerprinting
+  - Ransomware
+  - MITM
+# Binary mode is a separate task with its own class order. It is derived from the
+# label column by mapping Normal -> Normal and every other class -> Attack, and it is
+# trained separately (never collapsed from multiclass predictions). See docs/method.md.
+binary:
+  normal_class: Normal
+  classes:
+    - Normal
+    - Attack

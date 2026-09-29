@@ -1,0 +1,167 @@
+{
+  "evidence_status": "demo",
+  "note": "per-stage tensor shapes for a batch of 4 fixture rows; batch dimension first",
+  "tokenisation": "expand64to256",
+  "encoder_trainable_parameters_without_head": 73472,
+  "encoder_parameters_with_phase1_head": 77327,
+  "qelm_fixed_hidden_parameters": 127000,
+  "qelm_solved_output_parameters": 3765,
+  "stages": [
+    {
+      "block": "attention_encoder",
+      "stage": "input",
+      "shape": [
+        4,
+        48
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "fc1_gelu",
+      "shape": [
+        4,
+        128
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "bottleneck_gelu",
+      "shape": [
+        4,
+        64
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "expand_64_to_256",
+      "shape": [
+        4,
+        256
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "tokens_plus_feature_index_embedding",
+      "shape": [
+        4,
+        8,
+        32
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "attention_scores",
+      "shape": [
+        4,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "heads_concat",
+      "shape": [
+        4,
+        8,
+        256
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "w_o",
+      "shape": [
+        4,
+        8,
+        32
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "residual_layernorm_1",
+      "shape": [
+        4,
+        8,
+        32
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "ffn_residual_layernorm_2",
+      "shape": [
+        4,
+        8,
+        32
+      ]
+    },
+    {
+      "block": "attention_encoder",
+      "stage": "flatten",
+      "shape": [
+        4,
+        256
+      ]
+    },
+    {
+      "block": "qelm",
+      "stage": "qelm_input",
+      "shape": [
+        4,
+        256
+      ]
+    },
+    {
+      "block": "qelm",
+      "stage": "fixed_hidden_1_gelu",
+      "shape": [
+        4,
+        250
+      ],
+      "trainable": false
+    },
+    {
+      "block": "qelm",
+      "stage": "fixed_hidden_2_gelu",
+      "shape": [
+        4,
+        250
+      ],
+      "trainable": false
+    },
+    {
+      "block": "qelm",
+      "stage": "hidden_plus_bias",
+      "shape": [
+        4,
+        251
+      ]
+    },
+    {
+      "block": "qelm",
+      "stage": "solved_output",
+      "shape": [
+        4,
+        15
+      ],
+      "trainable": "closed-form"
+    }
+  ],
+  "qelm_config": {
+    "n_layers": 2,
+    "n_hidden": 250,
+    "activation": "gelu",
+    "lambda1": 0.007796819592477425,
+    "lambda2": 9.40142182764623e-06,
+    "theta": 2.93249455316981,
+    "rho": 0.04380376578722878,
+    "global_angle_mode": "shift",
+    "weight_scale": "fan_in",
+    "seed": 42
+  },
+  "solver_info": {
+    "method": "scipy.linalg.solve(assume_a=pos)",
+    "ridge_lambda": 0.007806221014305071,
+    "n_rows": 7224,
+    "hidden_dim": 251
+  }
+}

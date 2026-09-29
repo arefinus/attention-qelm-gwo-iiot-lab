@@ -1,0 +1,17 @@
+# Grey Wolf Optimizer settings taken from the source paper (Table 3 and Section 4.4).
+# Search space is 7-dimensional. Fitness = k-fold macro-F1 on the TRAINING partition only.
+name: gwo_paper
+n_wolves: 20
+max_iter: 50
+early_stop_tol: 1.0e-4
+early_stop_patience: 10
+a_schedule: linear            # a(t) = 2 (1 - t / T_max)
+seed: 42
+space:
+  n_layers:    { type: int,   low: 1,       high: 5 }
+  n_hidden:    { type: int,   low: 64,      high: 1024 }
+  activation:  { type: cat,   choices: [sigmoid, tanh, relu, gelu] }
+  lambda1:     { type: log,   low: 1.0e-6,  high: 1.0e-1 }
+  lambda2:     { type: log,   low: 1.0e-6,  high: 1.0e-1 }
+  theta:       { type: float, low: 0.0,     high: 6.283185307179586 }
+  rho:         { type: float, low: 0.0,     high: 1.0 }

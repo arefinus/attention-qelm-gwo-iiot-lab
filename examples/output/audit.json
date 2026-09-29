@@ -1,0 +1,32 @@
+{
+  "evidence_status": "demo",
+  "identifier_like_columns": [
+    {
+      "column": "frame.number",
+      "n_unique": 9030,
+      "unique_ratio": 1.0,
+      "reasons": [
+        "unique_ratio=1.000",
+        "monotone_in_row_order"
+      ]
+    }
+  ],
+  "placeholder_encoding": [
+    {
+      "column": "feature_40",
+      "placeholder_share": 0.1513842746400886,
+      "nmi_mask_vs_label": 0.5094265101529855,
+      "interpretation": "placeholder presence predicts the label; check whether the value is structurally undefined for some protocols"
+    }
+  ],
+  "duplicate_flows": {
+    "n_train": 7224,
+    "n_test": 1806,
+    "duplicates_within_train": 17,
+    "duplicates_within_test": 1,
+    "test_rows_also_in_train": 12,
+    "test_rows_also_in_train_share": 0.006644518272425249,
+    "interpretation": "test rows identical to a training row are memorisable, not generalisation"
+  },
+  "note": "Audits are heuristics with stated thresholds. On the authored fixture they are a demonstration; on real data they are proposed checks, not a verdict."
+}

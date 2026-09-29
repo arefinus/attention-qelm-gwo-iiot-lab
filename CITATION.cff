@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+type: software
+title: attention-qelm-gwo-iiot-lab
+authors:
+  - family-names: Sourav
+    given-names: Md Sultanul Arefin
+version: 0.1.0
+date-released: "2026-09-27"
+license: MIT
+repository-code: https://github.com/arefinus/attention-qelm-gwo-iiot-lab

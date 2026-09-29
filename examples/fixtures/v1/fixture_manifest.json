@@ -1,0 +1,26 @@
+{
+  "fixture_version": "v1",
+  "generator": "tools/make_fixture.py",
+  "seed": 42,
+  "n_rows": 9030,
+  "n_features": 48,
+  "class_counts": {
+    "Normal": 6537,
+    "DDoS_UDP": 574,
+    "DDoS_ICMP": 323,
+    "SQL_Injection": 240,
+    "DDoS_TCP": 238,
+    "DDoS_HTTP": 232,
+    "Password": 181,
+    "Vulnerability_Scanner": 149,
+    "Port_Scanning": 137,
+    "XSS": 109,
+    "Uploading": 95,
+    "Backdoor": 82,
+    "OS_Fingerprinting": 68,
+    "Ransomware": 53,
+    "MITM": 12
+  },
+  "sha256_fixture_csv": "13b328e996c15cc1117a82082b79c6ec0cf516e0963fccafb2cdde6bb8b59f28",
+  "statement": "Authored synthetic demonstration data. Fictional identifiers. Not derived from any person, company, account or dataset."
+}

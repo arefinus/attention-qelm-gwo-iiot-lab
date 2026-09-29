@@ -1,0 +1,53 @@
+# Demo config for the binary task (Normal vs Attack). Trained separately from the
+# multiclass demo; shares the shortened schedule of demo_multiclass.yaml.
+name: demo_binary
+task: binary
+seed: 42
+classes_file: configs/classes.yaml
+manifest_file: configs/feature_manifest_paper.yaml
+data:
+  source: fixture
+  fixture_dir: examples/fixtures/v1
+  test_fraction: 0.20
+  inner_folds: 2
+preprocess:
+  drop_missing_above: 0.40
+  inf_policy: column_max
+  scaler: minmax
+encoder:
+  input_dim: 48
+  hidden_dim: 128
+  bottleneck_dim: 64
+  tokenisation: expand64to256
+  n_tokens: 8
+  token_dim: 32
+  n_heads: 8
+  head_dim: 32
+  ffn_multiplier: 4
+  dropout: 0.10
+  optimizer: adam
+  lr: 0.001
+  betas: [0.9, 0.999]
+  batch_size: 128
+  max_epochs: 20
+  patience: 5
+  focal_gamma: 2.0
+  focal_alpha: 0.25
+  class_weighting: inverse_frequency
+qelm:
+  n_layers: 3
+  n_hidden: 512
+  activation: gelu
+  lambda1: 3.2e-4
+  lambda2: 1.7e-3
+  theta: 1.84
+  rho: 0.63
+  global_angle_mode: shift
+  weight_scale: fan_in
+  solver: ridge
+search:
+  enabled: false
+  gwo_file: configs/gwo_demo.yaml
+evaluation:
+  seeds: [7, 13, 21, 42, 99]
+  baselines: [logistic_regression, random_forest, hist_gradient_boosting]
